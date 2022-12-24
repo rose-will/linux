@@ -266,10 +266,11 @@ static int __init example_init(void)
 	return 0;
 
 baz_error:
-	destroy_foo_obj(bar_obj);
+	destroy_foo_obj(baz_obj);
 bar_error:
-	destroy_foo_obj(foo_obj);
+	destroy_foo_obj(bar_obj);
 foo_error:
+	destroy_foo_obj(bar_obj);
 	kset_unregister(example_kset);
 	return -EINVAL;
 }
